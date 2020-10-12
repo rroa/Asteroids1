@@ -3,7 +3,7 @@
 #ifndef SDL_EVENT_HPP
 #define SDL_EVENT_HPP
 
-#include <SDL/SDL2.h>
+#include <SDL2\SDL.h>
 
 namespace Engine
 {
@@ -47,7 +47,7 @@ namespace Engine
             void HandleWindowEvents(SDL_Event* event);
             void HandleMouseButtonDownEvents(SDL_Event* event);
             void HandleMouseButtonUpEvents(SDL_Event* event);
-    }
+    };
 }
 
 #endif /* SDL_EVENT_HPP */
