@@ -3,7 +3,7 @@
 #include <algorithm>
 
 // OpenGL includes
-// #include <GL/glew.h>
+#include <GL/glew.h>
 #include <SDL2/SDL_opengl.h>
 
 namespace Engine
@@ -130,11 +130,38 @@ namespace Engine
 		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		// glBegin(GL_QUADS);		
+		// 	glVertex2f(50.0, 50.0);
+        //     glVertex2f(50.0, -50.0);
+        //     glVertex2f(-50.0, -50.0);
+        //     glVertex2f(-50.0, 50.0);	
+		// glEnd();
+
+		// glBegin(GL_TRIANGLES);
+		// 	glVertex3f(-50.0, -50.0, 0.0);
+		// 	glVertex3f( 0.0,  50.0, 0.0);
+		// 	glVertex3f( 50.0, -50.0, 0.0);
+		// glEnd();
+
+		// glBegin(GL_LINE_LOOP);
+		// 	glVertex3f(-50.0, -50.0, 0.0);
+		// 	glVertex3f( 0.0,  50.0, 0.0);
+		// 	glVertex3f( 50.0, -50.0, 0.0);
+		// glEnd();
+
+		// glBegin(GL_LINE_LOOP);
+            // glVertex2f(50.0, 50.0);
+            // glVertex2f(50.0, -50.0);
+            // glVertex2f(-50.0, -50.0);
+            // glVertex2f(-50.0, 50.0);			
+		// glEnd();
+
 		glBegin(GL_LINE_LOOP);
-            glVertex2f(50.0, 50.0);
-            glVertex2f(50.0, -50.0);
-            glVertex2f(-50.0, -50.0);
-            glVertex2f(-50.0, 50.0);
+			glVertex2f(0.0, 20.0);
+			glVertex2f( 12.0,  -10.0);
+			glVertex2f( 6.0, -4.0);
+			glVertex2f( -6.0, -4.0);
+			glVertex2f( -12.0, -10.0);
 		glEnd();
 
 		SDL_GL_SwapWindow(m_mainWindow);
