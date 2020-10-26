@@ -13,6 +13,7 @@
 
 namespace Engine
 {
+    class Ship;
     class App : public SDLEvent
     {
         public:
@@ -70,6 +71,7 @@ namespace Engine
 		    SDL_GLContext		 m_context;
 		    GameState::State	 m_state;
             Engine::TimeManager* m_timer;
+            Engine::Ship*        m_ship;
     };
 }
 

@@ -6,6 +6,9 @@
 #include <GL/glew.h>
 #include <SDL2/SDL_opengl.h>
 
+//
+#include "Ship.hpp"
+
 namespace Engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
@@ -21,6 +24,7 @@ namespace Engine
 	{
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
+		m_ship = new Ship;
 	}
 
 	App::~App()
@@ -29,6 +33,9 @@ namespace Engine
 
         // Removes timer allocation
         delete m_timer;
+
+		// Removes ship allocation
+		delete m_ship;
 	}
 
 	void App::Execute()
@@ -130,39 +137,8 @@ namespace Engine
 		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		// glBegin(GL_QUADS);		
-		// 	glVertex2f(50.0, 50.0);
-        //     glVertex2f(50.0, -50.0);
-        //     glVertex2f(-50.0, -50.0);
-        //     glVertex2f(-50.0, 50.0);	
-		// glEnd();
-
-		// glBegin(GL_TRIANGLES);
-		// 	glVertex3f(-50.0, -50.0, 0.0);
-		// 	glVertex3f( 0.0,  50.0, 0.0);
-		// 	glVertex3f( 50.0, -50.0, 0.0);
-		// glEnd();
-
-		// glBegin(GL_LINE_LOOP);
-		// 	glVertex3f(-50.0, -50.0, 0.0);
-		// 	glVertex3f( 0.0,  50.0, 0.0);
-		// 	glVertex3f( 50.0, -50.0, 0.0);
-		// glEnd();
-
-		// glBegin(GL_LINE_LOOP);
-            // glVertex2f(50.0, 50.0);
-            // glVertex2f(50.0, -50.0);
-            // glVertex2f(-50.0, -50.0);
-            // glVertex2f(-50.0, 50.0);			
-		// glEnd();
-
-		glBegin(GL_LINE_LOOP);
-			glVertex2f(0.0, 20.0);
-			glVertex2f( 12.0,  -10.0);
-			glVertex2f( 6.0, -4.0);
-			glVertex2f( -6.0, -4.0);
-			glVertex2f( -12.0, -10.0);
-		glEnd();
+		// Render code goes here
+		m_ship->Render();
 
 		SDL_GL_SwapWindow(m_mainWindow);
 	}
