@@ -1,5 +1,4 @@
 #include "App.hpp"
-#include <iostream>
 #include <algorithm>
 
 // OpenGL includes
@@ -10,9 +9,9 @@
 #include "Ship.hpp"
 
 namespace Engine
-{
+{	
 	const float DESIRED_FRAME_RATE = 60.0f;
-	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
+	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;	
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
@@ -42,7 +41,7 @@ namespace Engine
 	{
 		if (m_state != GameState::INIT_SUCCESSFUL)
 		{
-			std::cerr << "Game INIT was not successful." << std::endl;
+			SDL_Log("Game INIT was not successful.");
 			return;
 		}
 
@@ -87,10 +86,27 @@ namespace Engine
 	}
 
 	void App::OnKeyDown(SDL_KeyboardEvent keyBoardEvent)
-	{		
+	{
+		const float MOVE_UNIT = 15.f;
 		switch (keyBoardEvent.keysym.scancode)
 		{
-		default:			
+		case SDL_SCANCODE_W:
+			SDL_Log("Going up");	
+			m_ship->Move(0.0f, MOVE_UNIT);		
+			break;
+		case SDL_SCANCODE_A:
+			SDL_Log("Going left");
+			m_ship->Move(-MOVE_UNIT, 0.0f);
+			break;
+		case SDL_SCANCODE_S:
+			SDL_Log("Going down");
+			m_ship->Move(0.0f, -MOVE_UNIT);	
+			break;
+		case SDL_SCANCODE_D:
+			SDL_Log("Going right");
+			m_ship->Move(MOVE_UNIT, 0.0f);
+			break;
+		default:
 			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
 			break;
 		}
@@ -125,8 +141,6 @@ namespace Engine
 			endTime = m_timer->GetElapsedTimeInSeconds();
 		}
 
-		//double elapsedTime = endTime - startTime;        
-
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
 
 		m_nUpdates++;
@@ -149,7 +163,7 @@ namespace Engine
 		//
 		if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		{
-			std::cerr << "Failed to init SDL" << std::endl;
+			SDL_Log("Failed to init SDL");
 			return false;
 		}
 
@@ -171,7 +185,7 @@ namespace Engine
 
 		if (!m_mainWindow)
 		{
-			std::cerr << "Failed to create window!" << std::endl;
+			SDL_Log("Failed to create window!");
 			SDL_Quit();
 			return false;
 		}
