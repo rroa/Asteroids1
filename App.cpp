@@ -7,6 +7,7 @@
 
 //
 #include "Ship.hpp"
+#include "Asteroid.hpp"
 
 namespace Engine
 {	
@@ -24,6 +25,7 @@ namespace Engine
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
 		m_ship = new Ship;
+		m_asteroid = new Asteroid;
 	}
 
 	App::~App()
@@ -35,6 +37,9 @@ namespace Engine
 
 		// Removes ship allocation
 		delete m_ship;
+
+		// Removes asteroid
+		delete m_asteroid;
 	}
 
 	void App::Execute()
@@ -153,7 +158,8 @@ namespace Engine
 
 		// Render code goes here
 		m_ship->Render();
-
+		m_asteroid->Render();
+		
 		SDL_GL_SwapWindow(m_mainWindow);
 	}
 
