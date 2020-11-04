@@ -33,6 +33,10 @@ namespace Engine
 
     private:
         /* ==========================
+        * PRIVATE FUNCTIONS
+        * ==========================*/
+        void ApplyImpulse(Math::Vector2 impulse);
+        /* ==========================
         * MEMBERS
         * ==========================*/
         std::vector<Engine::Math::Vector2> m_points;

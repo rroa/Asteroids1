@@ -99,7 +99,7 @@ namespace Engine
 		{
 		case SDL_SCANCODE_W:
 			SDL_Log("Going up");	
-			// m_ship->Move(0.0f, MOVE_UNIT);		
+			m_ship->MoveUp();	
 			break;
 		case SDL_SCANCODE_A:
 			SDL_Log("Going left");
