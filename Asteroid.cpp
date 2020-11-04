@@ -36,11 +36,11 @@ namespace Engine
         glTranslatef(0.f, 0.f, 0.f);
 
         glBegin(GL_LINE_LOOP);
-        std::vector<Engine::Math::Vector2>::iterator it = m_points.begin();
-        for(; it != m_points.end(); ++it)
-        {
-            glVertex2f((*it).x, (*it).y);
-        }
+            std::vector<Engine::Math::Vector2>::iterator it = m_points.begin();
+            for(; it != m_points.end(); ++it)
+            {
+                glVertex2f((*it).x, (*it).y);
+            }
         glEnd();
     }
 }

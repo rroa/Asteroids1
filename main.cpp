@@ -19,7 +19,7 @@ int main(int argc, char ** argv)
 	{
 		std::cout << "App Init error!\n";
 		return -1;
-	}
+	}	
 
 	// Execute game
 	//
