@@ -13,6 +13,8 @@
 
 namespace Engine
 {
+    class Ship;
+    class Asteroid;
     class App : public SDLEvent
     {
         public:
@@ -45,6 +47,8 @@ namespace Engine
             bool Init            ( );
             void Update          ( );
             void Render          ( );
+            int  GetWidth        ( ) { return m_width; }
+            int  GetHeight       ( ) { return m_height; }
         private:
             /* =============================================================
             * PRIVATE FUNCTIONS
@@ -70,6 +74,8 @@ namespace Engine
 		    SDL_GLContext		 m_context;
 		    GameState::State	 m_state;
             Engine::TimeManager* m_timer;
+            Engine::Ship*        m_ship;
+            Engine::Asteroid*    m_asteroid;
     };
 }
 
