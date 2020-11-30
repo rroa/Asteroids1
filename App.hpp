@@ -12,7 +12,7 @@
 #include "TimeManager.hpp"
 
 namespace Engine
-{
+{    
     class Ship;
     class Asteroid;
     class App : public SDLEvent
@@ -75,7 +75,7 @@ namespace Engine
 		    GameState::State	 m_state;
             Engine::TimeManager* m_timer;
             Engine::Ship*        m_ship;
-            Engine::Asteroid*    m_asteroid;
+            Engine::Asteroid*    m_asteroid;            
     };
 }
 
