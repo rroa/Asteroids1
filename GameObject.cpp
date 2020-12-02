@@ -23,6 +23,7 @@ namespace Engine
         , m_rotation(rotation)
         , m_position(Engine::Math::Vector2::Origin)
         , m_velocity(Engine::Math::Vector2::Origin)
+        , m_state(Engine::GameObject::GameObjectState::NORMAL)
     {}
 
     void GameObject::ApplyImpulse(Engine::Math::Vector2 impulse, float angle)

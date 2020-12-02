@@ -4,7 +4,6 @@
 #include <gl\GL.h>
 
 // STL
-#include <iostream>
 #include <cmath>
 
 // Asteroids
@@ -18,7 +17,7 @@ namespace Engine
     const float THRUST = 15.0f;
     const float DRAG_FORCE = 0.999f;
     const float ANGLE_OFFSET = 90.0f;
-
+    const float BULLET_SPEED = 250;
     Ship::Ship(App* parent)
         : GameObject(1.0f, 0.0f, 250.0f)
         , m_parent(parent) // TODO: RR: Contemplate using a component based design approach
@@ -101,12 +100,9 @@ namespace Engine
         float bulletPx = m_points[0].x * cosf(shootingAngle * ( PI / 180));
         float bulletPy = m_points[0].y * sinf(shootingAngle * ( PI / 180));
 
-        // float bulletVx = m_currentSpeed * cosf(shootingAngle * ( PI / 180));
-        // float bulletVy = m_currentSpeed * sinf(shootingAngle * ( PI / 180));
-
-        Bullet* bullet = new Bullet;
-        bullet->Teleport(bulletPx, bulletPy);
-        bullet->ApplyImpulse(Math::Vector2(m_currentSpeed), shootingAngle);
+        Bullet* bullet = new Bullet(m_parent);        
+        bullet->Teleport(m_position.x + bulletPx, m_position.y + bulletPy);
+        bullet->ApplyImpulse(Math::Vector2(m_currentSpeed + BULLET_SPEED), shootingAngle);
 
         return bullet;
     }
