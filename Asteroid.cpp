@@ -20,7 +20,7 @@ namespace Engine
 
     Asteroid::Asteroid(App* parent)
         : GameObject(1.0f, 0.0f, 120.0f)
-        , m_parent(parent)             
+        , m_parent(parent)
     {
         float sizeFactor = 1;
         float min = MIN_SIZE / sizeFactor;
@@ -35,12 +35,13 @@ namespace Engine
         }
        
         float x = randInRange(-150.0f, 150.0f);
-        float y = randInRange(-150.0f, 150.0f);                
-        ApplyImpulse(Engine::Math::Vector2(x, y));
+        float y = randInRange(-150.0f, 150.0f);
+        ApplyImpulse(Engine::Math::Vector2(x, y), m_rotation);
     }
 
     void Asteroid::Update(float deltaTime)
     {
+        m_angle += m_rotation * deltaTime;
         GameObject::Update(m_parent, deltaTime);
     }
 }

@@ -15,30 +15,27 @@ namespace Engine
         if(x < min) return max - (min - x);
         if(x > max) return min + (x - max);
         return x;
-    }    
+    }
 
     GameObject::GameObject(float mass, float angle, float rotation)
         : m_mass(mass)
         , m_angle(angle)
         , m_rotation(rotation)
-    {
-        m_position = Engine::Math::Vector2::Origin;
-        m_velocity = Engine::Math::Vector2::Origin;
-    }
+        , m_position(Engine::Math::Vector2::Origin)
+        , m_velocity(Engine::Math::Vector2::Origin)
+    {}
 
-    void GameObject::ApplyImpulse(Engine::Math::Vector2 impulse)
+    void GameObject::ApplyImpulse(Engine::Math::Vector2 impulse, float angle)
     {
         if(m_mass > 0)
-        {
-            m_velocity.x += (impulse.x / m_mass) * cosf((m_rotation) * (PI / 180));
-            m_velocity.y += (impulse.y / m_mass) * sinf((m_rotation) * (PI / 180));
+        {            
+            m_velocity.x += (impulse.x / m_mass) * cosf((angle) * (PI / 180));
+            m_velocity.y += (impulse.y / m_mass) * sinf((angle) * (PI / 180));
         }
     }
 
     void GameObject::Update(App* world, float deltaTime)
     {
-        m_angle += m_rotation * deltaTime;
-
         m_position.x += m_velocity.x * deltaTime;
         m_position.y += m_velocity.y * deltaTime;
 

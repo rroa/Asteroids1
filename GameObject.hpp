@@ -18,11 +18,14 @@ namespace Engine
             void Render();
 
         protected:
-            void ApplyImpulse(Engine::Math::Vector2 impulse);
+            /* ==========================
+            * PROTECTED FUNCTIONS
+            * ==========================*/
+            void ApplyImpulse(Engine::Math::Vector2 impulse, float angle);
             /* ==========================
             * MEMBERS
             * ==========================*/
-            std::vector<Engine::Math::Vector2> m_points;         
+            std::vector<Engine::Math::Vector2> m_points;
             Engine::Math::Vector2 m_position;
             Engine::Math::Vector2 m_velocity;
             float m_angle;
