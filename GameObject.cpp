@@ -34,6 +34,12 @@ namespace Engine
         }
     }
 
+    void GameObject::Teleport(float _x, float _y)
+    {
+        m_position.x = _x;
+        m_position.y = _y;
+    }
+
     void GameObject::Update(App* world, float deltaTime)
     {
         m_position.x += m_velocity.x * deltaTime;

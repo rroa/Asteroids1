@@ -8,20 +8,20 @@
 #include <vector>
 
 namespace Engine
-{
+{    
     class App;
     class GameObject
     {        
         public:  
+            /* ==========================
+            * PUBLIC FUNCTIONS
+            * ==========================*/
             GameObject(float mass, float angle, float rotation);
             void Update(App* world, float deltaTime);
             void Render();
-
-        protected:
-            /* ==========================
-            * PROTECTED FUNCTIONS
-            * ==========================*/
             void ApplyImpulse(Engine::Math::Vector2 impulse, float angle);
+            void Teleport(float _x, float _y);
+        protected:                        
             /* ==========================
             * MEMBERS
             * ==========================*/

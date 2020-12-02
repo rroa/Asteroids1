@@ -12,6 +12,7 @@
 
 namespace Engine
 {
+    class Bullet;
     class App;
     class Ship : public GameObject
     {
@@ -30,7 +31,7 @@ namespace Engine
         void RotateLeft(float deltaTime);
         void RotateRight(float deltaTime);
         void Update(float deltaTime);        
-
+        Bullet* Shoot();
     private:
         /* ==========================
         * PRIVATE FUNCTIONS

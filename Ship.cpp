@@ -7,6 +7,9 @@
 #include <iostream>
 #include <cmath>
 
+// Asteroids
+#include "Bullet.hpp"
+
 namespace Engine
 {
     // TODO: RR: Move this to a lib
@@ -90,5 +93,21 @@ namespace Engine
 		m_points.push_back(Math::Vector2(6.0f, -4.0f));
 		m_points.push_back(Math::Vector2(-6.0f, -4.0f));
 		m_points.push_back(Math::Vector2(-12.0f, -10.0f));
+    }
+
+    Bullet* Ship::Shoot()
+    {
+        float shootingAngle = m_angle + ANGLE_OFFSET;
+        float bulletPx = m_points[0].x * cosf(shootingAngle * ( PI / 180));
+        float bulletPy = m_points[0].y * sinf(shootingAngle * ( PI / 180));
+
+        // float bulletVx = m_currentSpeed * cosf(shootingAngle * ( PI / 180));
+        // float bulletVy = m_currentSpeed * sinf(shootingAngle * ( PI / 180));
+
+        Bullet* bullet = new Bullet;
+        bullet->Teleport(bulletPx, bulletPy);
+        bullet->ApplyImpulse(Math::Vector2(m_currentSpeed), shootingAngle);
+
+        return bullet;
     }
 } // namespace Engine
