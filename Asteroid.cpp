@@ -19,21 +19,23 @@ namespace Engine
     const float PI = 3.141592653;
 
     Asteroid::Asteroid(App* parent)
-        : GameObject(1.0f, 0.0f, 120.0f)
+        : GameObject(1.0f, 1.0f, 0.0f, 120.0f)
         , m_parent(parent)
     {
         float sizeFactor = 1;
         float min = MIN_SIZE / sizeFactor;
         float max = MAX_SIZE / sizeFactor;
 
-        for(size_t idx = 0; idx < NUM_POINTS; ++idx)
+        for (size_t idx = 0; idx < NUM_POINTS; ++idx)
         {
             const float radians = (idx / static_cast<float>(NUM_POINTS)) * 2.0f * PI;
             const float randDist = min + (max - min) * (rand() / static_cast<float>(RAND_MAX));
-              m_points.push_back(Engine::Math::Vector2(sinf(radians) * randDist,
-                                                       cosf(radians) * randDist));
+            m_points.push_back(Engine::Math::Vector2(sinf(radians) * randDist,
+                                                     cosf(radians) * randDist));
         }
-       
+
+        m_radius = (min + max) * 0.5f;
+
         float x = randInRange(-150.0f, 150.0f);
         float y = randInRange(-150.0f, 150.0f);
         ApplyImpulse(Engine::Math::Vector2(x, y), m_rotation);

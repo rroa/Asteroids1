@@ -18,8 +18,9 @@ namespace Engine
     const float DRAG_FORCE = 0.999f;
     const float ANGLE_OFFSET = 90.0f;
     const float BULLET_SPEED = 250;
+    const float RADIUS = 10.0f;
     Ship::Ship(App* parent)
-        : GameObject(1.0f, 0.0f, 250.0f)
+        : GameObject(1.0f, RADIUS, 0.0f, 250.0f)
         , m_parent(parent) // TODO: RR: Contemplate using a component based design approach
     {        
         std::cout << "Construction of ship\n";
@@ -27,7 +28,7 @@ namespace Engine
     }
 
     Ship::Ship(App* parent, float _x, float _y)
-        : GameObject(1.0f, 0.0f, 250.0f)
+        : GameObject(1.0f, RADIUS, 0.0f, 250.0f)
         , m_parent(parent)
     {
         m_position = Math::Vector2(_x, _y);
