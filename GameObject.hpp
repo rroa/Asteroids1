@@ -34,6 +34,7 @@ namespace Engine
             void ApplyImpulse(Engine::Math::Vector2 impulse, float angle);
             void Teleport(float _x, float _y);         
             bool DetectCollision(GameObject* object); 
+            inline Engine::Math::Vector2 GetPosition() { return m_position; }
             inline bool CouldCollide() { return m_state == GameObjectState::NORMAL; }
             inline bool IsDisappearing() { return m_state == GameObjectState::DELETED; }
             inline bool IsColliding() { return m_state == GameObjectState::COLLIDED; }

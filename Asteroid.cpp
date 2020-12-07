@@ -18,11 +18,12 @@ namespace Engine
     // Move this out to a Math 
     const float PI = 3.141592653;
 
-    Asteroid::Asteroid(App* parent)
+    Asteroid::Asteroid(AsteroidSize::Size size, App* parent)
         : GameObject(1.0f, 1.0f, 0.0f, 120.0f)
         , m_parent(parent)
+        , m_size(size)
     {
-        float sizeFactor = 1;
+        float sizeFactor = (int) m_size + 1;
         float min = MIN_SIZE / sizeFactor;
         float max = MAX_SIZE / sizeFactor;
 

@@ -10,6 +10,7 @@
 //
 #include "SDLEvents.hpp"
 #include "TimeManager.hpp"
+#include "Asteroid.hpp"
 
 namespace Engine
 {        
@@ -69,6 +70,9 @@ namespace Engine
             * ============================================================= */
             void CleanGameObjects();
             void CreateBullet();
+            void CreateAsteroid(Engine::Asteroid::AsteroidSize::Size size, int amount, float x, float y);
+            void CreateDebris(Engine::Asteroid* object);
+            void CheckCollision();
             void DestroyGameObject(Engine::GameObject* object);
 
            /* =============================================================
@@ -83,10 +87,10 @@ namespace Engine
 		    SDL_GLContext		 m_context;
 		    GameState::State	 m_state;
             Engine::TimeManager* m_timer;
-            Engine::Ship*        m_ship;
-            Engine::Asteroid*    m_asteroid;
+            Engine::Ship*        m_ship;            
             std::list< Engine::GameObject* > m_objects;
             std::list< Engine::Bullet* > m_bullets;
+            std::list< Engine::Asteroid* > m_asteroids;
     };
 }
 
